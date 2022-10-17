@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import TweetModal from "./components/TweetModal";
+import User from "./components/User";
+import { useDispatch } from "react-redux";
+import { AddNewProfile } from "./components/Redux/Action";
+import { collection, query, onSnapshot } from "firebase/firestore";
+import { db } from "./Firebase/Config";
+import { useEffect } from "react";
+import RightSideBar from "./RightSideBar";
 
 function App() {
+  let dispatch = useDispatch();
+
+  useEffect(() => {
+    const retrieveAccount = async () => {
+      const q = query(collection(db, "accounts"));
+      const unsubscribe = onSnapshot(q, (querySnapshot) => {
+        const accountsArr = [];
+        querySnapshot.forEach((doc) => {
+          accountsArr.push(doc.data());
+        });
+        dispatch(AddNewProfile(accountsArr));
+        console.log(accountsArr);
+      });
+    };
+    retrieveAccount();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TweetModal />
+      <User />
+      <RightSideBar />
     </div>
   );
 }

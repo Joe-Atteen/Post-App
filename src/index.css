@@ -1,13 +1,425 @@
-body {
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600;700;800;900;1000&family=Poppins&family=Questrial&display=swap");
+
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  width: 100%;
+  font-family: "Mulish", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.links {
+  display: grid;
+  position: fixed;
+  border-right: 1px solid #979797;
+  width: 23%;
+  height: 100vh;
+  padding: 10px 50px 30px 100px;
+  background: #f6f6f6;
+}
+
+.trending {
+  position: fixed;
+  margin-left: 68%;
+  border-left: 1px solid #979797;
+  width: 32%;
+  height: 100vh;
+  padding: 30px;
+}
+
+.trending .list {
+  background: #f6f6f6;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  height: 100vh;
+  padding: 20px;
+}
+
+.trending .list h1 {
+  font-size: 25px;
+  margin-bottom: 20px;
+}
+
+.trending .list h5 {
+  font-weight: 400;
+  color: #979797;
+  margin-bottom: 5px;
+}
+
+.trending .list p {
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.trending .list h6 {
+  color: #979797;
+  margin-bottom: 30px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  align-items: flex-end;
+  position: absolute;
+  font-size: 40px;
+  font-weight: 700;
+}
+
+.logo {
+  margin-bottom: -50px;
+}
+
+.tweet-button {
+  width: 100%;
+  height: 50px;
+  cursor: pointer;
+  border-radius: 10px;
+  border: none;
+  background: #8f71aa;
+  color: #fff;
+  font-size: 16px;
+  line-height: 30px;
+  font-weight: 600;
+}
+
+.tweet-button:hover {
+  background: #8253ab;
+}
+
+.links a {
+  text-decoration: none;
+  color: #000;
+  margin: auto;
+}
+
+.content {
+  position: absolute;
+  margin: 0 32% 0 23%;
+  width: 45%;
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+.backdrop {
+  background: #000;
+  opacity: 0.55;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  z-index: 29;
+}
+
+.form {
+  z-index: 30;
+  width: 40%;
+  position: absolute;
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, -20%);
+}
+
+.modal-close {
+  font-size: 14px;
+  font-weight: 800;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  padding: 8px 12.5px;
+  position: relative;
+  left: 100%;
+  transform: translateX(-100%);
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  background: #d6d5d5;
+}
+
+.view {
+  font-size: 16px;
+  border: 1px solid #d6d5d5;
+  border-radius: 20px;
+  width: 53%;
+  padding: 10px;
+  color: #8f71aa;
+}
+
+#tweet {
+  border: none;
+  outline: none;
+  resize: none;
+  padding: 10px 0;
+  font-size: 19px;
+  line-height: 30px;
+}
+
+.form button {
+  width: 20%;
+  height: 40px;
+  font-size: 16px;
+  line-height: 30px;
+  color: #fff;
+  background: #8f71aa;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.form button:hover {
+  background: #8253ab;
+}
+
+.home {
+  padding: 30px 0;
+}
+
+.home h1 {
+  font-size: 20px;
+  margin: 0 50px 30px 50px;
+}
+
+.profile-bar {
+  display: flex;
+  align-items: center;
+  margin: 0 50px 20px 50px;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 100px;
+  border-radius: 50%;
+  background: #d6d5d5 url(../src/images/icons8-contacts.svg) no-repeat;
+  background-size: cover;
+  margin-right: 20px;
+}
+
+.home h2 {
+  font-size: 23px;
+  font-weight: 800;
+}
+
+.home h3 {
+  font-size: 16px;
+  font-weight: 300;
+  color: #979797;
+}
+
+.home .horizontal-line {
+  width: 100%;
+  height: 1px;
+  background: #f6f6f6;
+}
+
+.post {
+  border-bottom: 1px solid #f6f6f6;
+  padding: 20px 50px;
+}
+
+.post .time {
+  margin-left: 95%;
+  padding-bottom: 20px;
+  font-size: 12px;
+  color: #979797;
+}
+
+.post p {
+  margin-bottom: 15px;
+}
+
+.post .emojis {
+  display: flex;
+  justify-content: center;
+}
+
+.emojis div {
+  cursor: pointer;
+}
+
+.postaccount {
+  width: 100%;
+  position: absolute;
+}
+
+.postaccount p {
+  font-weight: 200;
+}
+
+.postaccount span {
+  font-weight: 800;
+}
+
+.account form {
+  position: fixed;
+  background: #8f71aa;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+}
+
+.account form img {
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translate(-50%, -20%);
+}
+
+.account form input {
+  width: 30%;
+  height: 60px;
+  margin: auto;
+  position: absolute;
+  font-size: 16px;
+  padding: 0 10px;
+  border: none;
+  outline: none;
+}
+
+.account form .one {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.account form .two {
+  left: 50%;
+  top: 62%;
+  transform: translate(-50%, -62%);
+}
+
+.account form button {
+  position: absolute;
+  width: 12%;
+  height: 50px;
+  left: 50%;
+  top: 74%;
+  transform: translate(-50%, -74%);
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  background: #e4e4e4;
+}
+
+.account form button:hover {
+  background: #f0f0f0;
+}
+
+.editform {
+  position: relative;
+  width: 100%;
+  background: #8f71aa;
+  z-index: 20;
+  margin-bottom: -80px;
+}
+
+.editform h2 {
+  color: #fff;
+}
+
+.editform button {
+  background: #979797;
+}
+
+.editform button:hover {
+  background: #8b8b8b;
+}
+
+.profile {
+  padding: 100px;
+}
+
+.profile .pic {
+  width: 50%;
+  height: 200px;
+  border-radius: 50%;
+  background: #979797 url(../src/images/icons8-contacts.svg) no-repeat;
+  background-size: cover;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.profile .name {
+  width: 50%;
+  margin: auto;
+}
+
+.profile .name h2 {
+  text-align: center;
+  font-weight: 900;
+}
+
+.profile .name h3 {
+  text-align: center;
+  font-weight: 300;
+}
+
+.profile button {
+  position: absolute;
+  left: 50%;
+  top: 80%;
+  transform: translate(-50%, -80%);
+  width: 150px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background: #8f71aa;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+}
+
+.profile button:hover {
+  background: #8253ab;
+}
+
+.profile-bar button {
+  display: none;
+}
+
+.notification h2 {
+  margin: -70px 0 0 30px;
+  color: #fff;
+}
+
+.notification h3 {
+  text-align: center;
+  margin-top: 70px;
+  color: #979797;
+  font-size: 30px;
+}
+
+.messages {
+  padding: 45vh 50px;
+}
+
+.messages h2 {
+  color: #8b8b8b;
+  font-size: 30px;
+  text-align: center;
+}
+
+.logout button {
+  position: absolute;
+  z-index: 1;
+  width: 12%;
+  margin: 0 0 0 100px;
+  top: 95%;
+  transform: translateY(-95%);
+  height: 50px;
+  border: none;
+  border-radius: 10px;
+  background: #980038;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
 }
